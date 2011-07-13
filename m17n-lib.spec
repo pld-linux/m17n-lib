@@ -7,7 +7,7 @@ Summary:	A multilingual text processing library
 #Summary(pl.UTF-8):	-
 Name:		m17n-lib
 Version:	1.6.2
-Release:	0.1
+Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
@@ -129,8 +129,6 @@ cd ../m17n-db-%{version}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-# create directories if necessary
-#install -d $RPM_BUILD_ROOT
 
 %{__make} -j1 -C %{name}-%{version} install \
 	DESTDIR=$RPM_BUILD_ROOT
