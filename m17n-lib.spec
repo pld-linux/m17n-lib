@@ -2,13 +2,13 @@
 # Conditional build:
 %bcond_without	apidocs		# do not build and package API docs
 %bcond_without	static_libs	# don't build static libraries
-#
+
+%define	doc_ver	1.6.2
 Summary:	A multilingual text processing library
 Summary(pl.UTF-8):	Biblioteka przetwarzania tekstów wielojęzycznych
 Name:		m17n-lib
 Version:	1.6.3
-%define	doc_ver	1.6.2
-Release:	2
+Release:	3
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: http://www.m17n.org/m17n-lib-en/download.html
@@ -52,11 +52,11 @@ language. This library has following features:
  - The m17n library realizes multilingualization of many aspects of
    applications.
  - The m17n library represents multilingual text as an object named
-   M-text. M-text is a string with attributes called text properties,
-   and designed to substitute for string in C. Text properties carry
-   any information required to input, display and edit the text.
- - The m17n library  supports functions to handle M-texts.
- 
+   M-text. M-text is a string with attributes called text properties, and
+   designed to substitute for string in C. Text properties carry any
+   information required to input, display and edit the text.
+ - The m17n library supports functions to handle M-texts.
+
 m17n is an abbreviation of Multilingualization.
 
 %description -l pl.UTF-8
@@ -65,11 +65,11 @@ wielojęzycznych w języku C. Ma następujące cechy:
  - jest oprogramowaniem o otwartych źródłach
  - może być używana przez dowolne aplikacje linuksowe/uniksowe
  - realizuje wielojęzyczność w wielu aspektach i zastosowaniach
- - reprezentuje tekst wielojęzyczny jako obiekt o nazwie M-text
-   (M-text to łańcuch z atrybutami będącymi właściwościami tekstu,
-   zaprojektowany do podstawienia do dowolnego łańcucha w C.
-   Właściwości tekstu przechowują dowolne informacje wymagane przy
-   wprowadzaniu, wyświetlaniu i edycji tekstu)
+ - reprezentuje tekst wielojęzyczny jako obiekt o nazwie M-text (M-text
+   to łańcuch z atrybutami będącymi właściwościami tekstu, zaprojektowany
+   do podstawienia do dowolnego łańcucha w C. Właściwości tekstu
+   przechowują dowolne informacje wymagane przy wprowadzaniu,
+   wyświetlaniu i edycji tekstu)
  - obsługuje funkcje przetwarzające M-text.
 
 m17n to skrót od "multilingualization", czyli uwielojęzycznienie.
@@ -102,6 +102,9 @@ Statyczna biblioteka m17n.
 Summary:	m17n API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki m17n
 Group:		Documentation
+%if "%{_rpmversion}" >= "5"
+BuildArch:	noarch
+%endif
 
 %description apidocs
 API and internal documentation for m17n library.
@@ -246,6 +249,7 @@ rm -rf $RPM_BUILD_ROOT
 %endif
 
 %files -n m17n-db -f m17n-db.lang
+%defattr(644,root,root,755)
 %doc m17n-db-%{version}/{AUTHORS,ChangeLog,NEWS,README}
 %attr(755,root,root) %{_bindir}/m17n-db
 %{_mandir}/man1/m17n-db.1*
