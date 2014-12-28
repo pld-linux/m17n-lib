@@ -27,7 +27,7 @@ BuildRequires:	fontconfig-devel
 BuildRequires:	freetype-devel >= 2
 BuildRequires:	fribidi-devel
 BuildRequires:	gd-devel
-BuildRequires:	gettext-devel >= 0.17
+BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	ispell
 BuildRequires:	libotf-devel >= 0.9.4
 BuildRequires:	libthai-devel
