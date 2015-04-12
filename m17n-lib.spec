@@ -8,7 +8,7 @@ Summary:	A multilingual text processing library
 Summary(pl.UTF-8):	Biblioteka przetwarzania tekstów wielojęzycznych
 Name:		m17n-lib
 Version:	1.6.3
-Release:	3
+Release:	4
 License:	LGPL v2.1+
 Group:		Libraries
 #Source0Download: http://www.m17n.org/m17n-lib-en/download.html
