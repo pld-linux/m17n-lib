@@ -7,17 +7,18 @@
 Summary:	A multilingual text processing library
 Summary(pl.UTF-8):	Biblioteka przetwarzania tekstów wielojęzycznych
 Name:		m17n-lib
-Version:	1.6.3
-Release:	4
+Version:	1.7.0
+Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
-#Source0Download: http://www.m17n.org/m17n-lib-en/download.html
-Source0:	http://www.m17n.org/m17n-lib-download/%{name}-%{version}.tar.gz
-# Source0-md5:	24c8f0a2fb167e1a0e25815c8421a2a4
-Source1:	http://www.m17n.org/m17n-lib-download/m17n-docs-%{doc_ver}.tar.gz
+Source0:	http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
+# Source0-md5:	9769e12770483c203c6b304ce406495e
+# no longer functional
+#Source1:	http://www.m17n.org/m17n-lib-download/m17n-docs-%{doc_ver}.tar.gz
+Source1:	m17n-docs-%{doc_ver}.tar.gz
 # Source1-md5:	5b9652fb714772fc7c7946e282ebedb3
-Source2:	http://www.m17n.org/m17n-lib-download/m17n-db-%{version}.tar.gz
-# Source2-md5:	0c4723d0e6f6f5b2e8f40705ad5ab7d3
+Source2:	http://download.savannah.gnu.org/releases/m17n/m17n-db-%{version}.tar.gz
+# Source2-md5:	0a320d3cf955abba459e51161fc91236
 Patch0:		DESTDIR.patch
 URL:		http://www.m17n.org/
 BuildRequires:	anthy-devel
@@ -31,9 +32,11 @@ BuildRequires:	gettext-tools >= 0.17
 BuildRequires:	ispell
 BuildRequires:	libotf-devel >= 0.9.4
 BuildRequires:	libthai-devel
-BuildRequires:	libxml2-devel
+BuildRequires:	libxml2-devel >= 2
 BuildRequires:	localedb-src
 BuildRequires:	pkgconfig
+# if not libthai
+#BuildRequires:	wordcut-devel
 BuildRequires:	xorg-lib-libX11-devel
 BuildRequires:	xorg-lib-libXaw-devel
 BuildRequires:	xorg-lib-libXft-devel >= 2.0.0
