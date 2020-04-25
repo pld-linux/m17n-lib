@@ -7,20 +7,20 @@
 Summary:	A multilingual text processing library
 Summary(pl.UTF-8):	Biblioteka przetwarzania tekstów wielojęzycznych
 Name:		m17n-lib
-Version:	1.7.0
+Version:	1.8.0
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
-# Source0-md5:	9769e12770483c203c6b304ce406495e
+# Source0-md5:	35a7c29b4c5892c643153eeaefd1f787
 # no longer functional
 #Source1:	http://www.m17n.org/m17n-lib-download/m17n-docs-%{doc_ver}.tar.gz
 Source1:	m17n-docs-%{doc_ver}.tar.gz
 # Source1-md5:	5b9652fb714772fc7c7946e282ebedb3
 Source2:	http://download.savannah.gnu.org/releases/m17n/m17n-db-%{version}.tar.gz
-# Source2-md5:	0a320d3cf955abba459e51161fc91236
+# Source2-md5:	49378f8ed738f84abfaf5e09699e1fa0
 Patch0:		DESTDIR.patch
-URL:		http://www.m17n.org/
+URL:		http://www.nongnu.org/m17n/
 BuildRequires:	anthy-devel
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -105,7 +105,7 @@ Statyczna biblioteka m17n.
 Summary:	m17n API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki m17n
 Group:		Documentation
-%if "%{_rpmversion}" >= "5"
+%if "%{_rpmversion}" >= "4.6"
 BuildArch:	noarch
 %endif
 
@@ -156,6 +156,7 @@ cd ../m17n-db-%{version}
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} -j1 -C %{name}-%{version} install \
+	BINSCRIPTS="m17n-config" \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__make} -j1 -C m17n-docs-%{doc_ver} install \
