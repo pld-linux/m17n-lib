@@ -1,24 +1,23 @@
 #
 # Conditional build:
-%bcond_without	apidocs		# do not build and package API docs
-%bcond_without	static_libs	# don't build static libraries
+%bcond_without	apidocs		# API documentation
+%bcond_without	static_libs	# static libraries
 
-%define	doc_ver	1.6.2
+%define	doc_ver	1.8.4
+%define	db_ver	1.8.6
 Summary:	A multilingual text processing library
 Summary(pl.UTF-8):	Biblioteka przetwarzania tekstów wielojęzycznych
 Name:		m17n-lib
-Version:	1.8.0
+Version:	1.8.4
 Release:	1
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
-# Source0-md5:	35a7c29b4c5892c643153eeaefd1f787
-# no longer functional
-#Source1:	http://www.m17n.org/m17n-lib-download/m17n-docs-%{doc_ver}.tar.gz
-Source1:	m17n-docs-%{doc_ver}.tar.gz
-# Source1-md5:	5b9652fb714772fc7c7946e282ebedb3
-Source2:	http://download.savannah.gnu.org/releases/m17n/m17n-db-%{version}.tar.gz
-# Source2-md5:	49378f8ed738f84abfaf5e09699e1fa0
+# Source0-md5:	87e5f0c7f755daa5ee0695ace5eec455
+Source1:	http://download.savannah.gnu.org/releases/m17n/m17n-docs-%{doc_ver}.tar.gz
+# Source1-md5:	76986606692dbc1d1236c922dc5556ad
+Source2:	http://download.savannah.gnu.org/releases/m17n/m17n-db-%{db_ver}.tar.gz
+# Source2-md5:	a089bfe93b91e0c7ab8a0d2767c928de
 Patch0:		DESTDIR.patch
 URL:		http://www.nongnu.org/m17n/
 BuildRequires:	anthy-devel
@@ -145,7 +144,7 @@ cd ../m17n-docs-%{doc_ver}
 	%{!?with_static_libs:--disable-static}
 %{__make} -j1
 
-cd ../m17n-db-%{version}
+cd ../m17n-db-%{db_ver}
 %configure \
 	%{!?with_static_libs:--disable-static}
 %{__make} -j1
@@ -160,10 +159,11 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} -j1 -C m17n-docs-%{doc_ver} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%{__make} -j1 -C m17n-db-%{version} install \
+%{__make} -j1 -C m17n-db-%{db_ver} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %{__rm} -r $RPM_BUILD_ROOT%{_datadir}/m17n/docs
+%{__rm} $RPM_BUILD_ROOT%{_mandir}/man[35]/_home_mfabian_*
 
 # dlopened modules
 %{__rm} $RPM_BUILD_ROOT%{_libdir}/m17n/1.0/lib*.{la,a}
@@ -230,8 +230,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/mfont*.3*
 %{_mandir}/man3/mframe*.3*
 %{_mandir}/man3/minput_*.3*
+%{_mandir}/man3/mlanguage_*.3*
 %{_mandir}/man3/mlocale_*.3*
 %{_mandir}/man3/mplist*.3*
+%{_mandir}/man3/mscript_*.3*
 %{_mandir}/man3/msymbol*.3*
 %{_mandir}/man3/mtext*.3*
 
@@ -252,7 +254,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n m17n-db -f m17n-db.lang
 %defattr(644,root,root,755)
-%doc m17n-db-%{version}/{AUTHORS,ChangeLog,NEWS,README}
+%doc m17n-db-%{db_ver}/{AUTHORS,ChangeLog,NEWS,README}
 %attr(755,root,root) %{_bindir}/m17n-db
 %{_mandir}/man1/m17n-db.1*
 %{_mandir}/man5/mdb*.5*
