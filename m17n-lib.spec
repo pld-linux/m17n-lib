@@ -3,13 +3,13 @@
 %bcond_without	apidocs		# API documentation
 %bcond_without	static_libs	# static libraries
 
-%define	doc_ver	1.8.4
-%define	db_ver	1.8.6
+%define	doc_ver	%{version}
+%define	db_ver	1.8.8
 Summary:	A multilingual text processing library
 Summary(pl.UTF-8):	Biblioteka przetwarzania tekstów wielojęzycznych
 Name:		m17n-lib
 Version:	1.8.4
-Release:	1
+Release:	2
 License:	LGPL v2.1+
 Group:		Libraries
 Source0:	http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.gz
@@ -17,7 +17,7 @@ Source0:	http://download.savannah.gnu.org/releases/m17n/%{name}-%{version}.tar.g
 Source1:	http://download.savannah.gnu.org/releases/m17n/m17n-docs-%{doc_ver}.tar.gz
 # Source1-md5:	76986606692dbc1d1236c922dc5556ad
 Source2:	http://download.savannah.gnu.org/releases/m17n/m17n-db-%{db_ver}.tar.gz
-# Source2-md5:	a089bfe93b91e0c7ab8a0d2767c928de
+# Source2-md5:	20f82f58e15f867d0c6e6e55d9533cdb
 Patch0:		DESTDIR.patch
 URL:		http://www.nongnu.org/m17n/
 BuildRequires:	anthy-devel
