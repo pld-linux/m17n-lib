@@ -127,7 +127,7 @@ Baza danych biblioteki m17n.
 %setup -q -T -c -a0 -a1 -a2
 
 cd m17n-docs-%{doc_ver}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 cd %{name}-%{version}
